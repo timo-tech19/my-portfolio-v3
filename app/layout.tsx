@@ -1,3 +1,4 @@
+import ModalProvider from "@/providers/modal-provider";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={font.className}>{children}</body>
+			<body className={font.className}>
+				<ModalProvider />
+				{children}
+			</body>
 		</html>
 	);
 }

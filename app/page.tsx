@@ -3,6 +3,7 @@
 import Company from "@/components/company";
 import Container from "@/components/container";
 import Heading from "@/components/heading";
+import Project from "@/components/project";
 import Image from "next/image";
 import Link from "next/link";
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
@@ -21,6 +22,30 @@ export default function Home() {
 		{
 			href: "#projects",
 			label: "Projects",
+		},
+	];
+
+	const projects = [
+		{
+			imageUrl: "/appchat.png",
+			name: "App Chat",
+			description:
+				"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque dignissimos sed similique, nobis numquam iste itaque ducimus magnam harum.",
+			github: "",
+		},
+		{
+			imageUrl: "/ecommerce.png",
+			name: "Ecommerce App",
+			description:
+				"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque dignissimos sed similique, nobis numquam iste itaque ducimus magnam harum.",
+			github: "",
+		},
+		{
+			imageUrl: "/music.png",
+			name: "Music App",
+			description:
+				"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque dignissimos sed similique, nobis numquam iste itaque ducimus magnam harum.",
+			github: "",
 		},
 	];
 
@@ -62,15 +87,13 @@ export default function Home() {
 										<Typewriter
 											words={[
 												"Software Developer",
+												"Fast-paced Learner",
 												"Problem Solver",
 												"great fit for the job!",
 											]}
 											loop={0}
 											cursor
 											cursorStyle='<'
-											// typeSpeed={70}
-											// deleteSpeed={50}
-											// delaySpeed={1000}
 										/>
 									</span>
 								</h3>
@@ -147,7 +170,7 @@ export default function Home() {
 					</Container>
 				</section>
 
-				<section className='my-16'>
+				<section className='mt-16 py-4 bg-stone-50'>
 					<Container>
 						<Heading title='Previously worked at' />
 						<div className='mt-12 flex items-center justify-around'>
@@ -165,36 +188,39 @@ export default function Home() {
 					</Container>
 				</section>
 
-				<section className='my-16'>
+				<section className='py-16'>
 					<Container>
 						<Heading title='Personal Projects' />
 						<div className='mt-12'>
-							<div className='flex justify-around items-center'>
-								<div className='flex'>
-									<span className='text-5xl font-bold'>01</span>
-									<Image
-										src='/appchat.png'
-										alt='App Chat'
-										width={400}
-										height={400}
-									/>
-								</div>
-								<div className='w-5/12'>
-									<h3 className='text-3xl font-semibold'>Project Name</h3>
-									<p className='mt-4'>
-										Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-										Iusto numquam quia laborum earum recusandae libero corrupti
-										unde doloremque, excepturi minima?
-									</p>
-									<div className=''>
-										<Link href='#'>Github</Link>
-										<button>Demo</button>
-									</div>
-								</div>
-							</div>
+							{projects.map((project, index) => (
+								<Project
+									key={project.name}
+									index={index + 1}
+									{...project}
+									className={index === 1 ? "flex-row-reverse" : ""}
+									video='/appchat-mvp.mp4'
+								/>
+							))}
 						</div>
 					</Container>
 				</section>
+
+				<footer className='py-16 bg-stone-50'>
+					<Container>
+						<div className='text-center'>
+							<h2 className='text-4xl font-semibold tracking-wide'>
+								Wanna Hire Me?
+							</h2>
+							<p className='text-xl mt-2'>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
+								quibusdam dolore quaerat.
+							</p>
+							<button className=' mt-4 uppercase bg-amber-300 px-8 py-3 text-xl font-semibold shadow-lg hover:bg-amber-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300 transition'>
+								Let&apos;s Talk!
+							</button>
+						</div>
+					</Container>
+				</footer>
 			</main>
 		</>
 	);
