@@ -11,6 +11,7 @@ interface ProjectProps {
 	className?: string;
 	video: string;
 	stack: string[];
+	url: string;
 }
 
 const Project: React.FC<ProjectProps> = ({
@@ -22,6 +23,7 @@ const Project: React.FC<ProjectProps> = ({
 	className,
 	video,
 	stack,
+	url,
 }) => {
 	const videoModal = useVideoModal();
 
@@ -38,8 +40,16 @@ const Project: React.FC<ProjectProps> = ({
 				</div>
 			</div>
 			<div className='lg:w-1/3 text-center lg:text-left w-3/4 mt-8 lg:mt-0'>
-				<h3 className='text-3xl font-semibold'>{name}</h3>
-				<ul className='mt-2 flex gap-x-3 items-center justify-center lg:justify-stretch flex-wrap gap-y-4'>
+				<h3 className='text-3xl font-semibold'>
+					<Link
+						target='_blank'
+						href={url}
+						className='hover:text-green-500 transition'
+					>
+						{name}
+					</Link>
+				</h3>
+				<ul className='mt-4 flex gap-x-3 items-center justify-center lg:justify-stretch flex-wrap gap-y-4'>
 					{stack.map((item) => (
 						<li key={item} className='bg-stone-200 py-1 px-2 rounded-md'>
 							{item}
@@ -50,6 +60,7 @@ const Project: React.FC<ProjectProps> = ({
 				<div className='mt-4 flex justify-center lg:justify-stretch gap-x-2'>
 					<Link
 						href={github}
+						target='_blank'
 						className='rounded-md border-2 border-amber-300 px-3 py-1.5 text-lg font-semibold shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300 transition'
 					>
 						Github

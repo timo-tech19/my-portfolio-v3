@@ -29,17 +29,20 @@ export default function Home() {
 		{
 			imageUrl: "/appchat.png",
 			name: "App Chat",
+			url: "https://timotech-appchat.netlify.app/",
 			description:
 				"A social media type application which helps people kickoff conversations by postings topics and having people reply directly to their DMs.",
-			github: "",
+			github: "https://github.com/timo-tech19/appchat",
 			stack: ["React", "Firebase", "TailWind CSS"],
+			video: "/appchat.mp4",
 		},
 		{
 			imageUrl: "/ecommerce.png",
 			name: "Ecommerce App",
+			url: "https://ecommerce-store-timotech.vercel.app/",
 			description:
 				"An ecommerce platform with a front end (store) and an admin area from managing your store.",
-			github: "",
+			github: "https://github.com/timo-tech19/ecommerce-store",
 			stack: [
 				"Nextjs",
 				"Zustand",
@@ -48,13 +51,15 @@ export default function Home() {
 				"Cloudinary",
 				"Clerk Auth",
 			],
+			video: "/ecommerce.mp4",
 		},
 		{
 			imageUrl: "/music.png",
 			name: "Music App",
+			url: "https://spotify-clone-timotech.vercel.app/",
 			description:
 				"Beautiful music application where you can upload your favourite songs and listen from anywhere.",
-			github: "",
+			github: "https://github.com/timo-tech19/spotify-clone",
 			stack: [
 				"Nextjs",
 				"Supabase",
@@ -62,6 +67,7 @@ export default function Home() {
 				"Zustand",
 				"React Hook Form",
 			],
+			video: "/music.mp4",
 		},
 	];
 
@@ -263,7 +269,6 @@ export default function Home() {
 									index={index + 1}
 									{...project}
 									className={index === 1 ? "lg:flex-row-reverse" : ""}
-									video='/appchat-mvp.mp4'
 								/>
 							))}
 						</div>
