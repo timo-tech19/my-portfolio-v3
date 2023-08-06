@@ -1,15 +1,27 @@
 "use client";
 
-import Company from "@/components/company";
-import Container from "@/components/container";
-import Heading from "@/components/heading";
-import Project from "@/components/project";
+import { useState, useEffect } from "react";
+import useMediaQueries from "media-queries-in-react";
 import Image from "next/image";
 import Link from "next/link";
 import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
 import { Typewriter } from "react-simple-typewriter";
 
+import Company from "@/components/company";
+import Container from "@/components/container";
+import Heading from "@/components/heading";
+import Project from "@/components/project";
+
 export default function Home() {
+	const mediaQueries = useMediaQueries({
+		mobile: "screen and (max-width: 1100px)",
+	});
+	const [show, setShow] = useState(false);
+	console.log(show);
+	useEffect(() => {
+		setShow(!mediaQueries.mobile);
+	}, [mediaQueries.mobile]);
+
 	const routes = [
 		{
 			href: "https://twitter.com/timo__tech",
@@ -96,7 +108,7 @@ export default function Home() {
 				</div>
 			</Container>
 			<main>
-				<RoughNotationGroup show>
+				<RoughNotationGroup show={show}>
 					<section>
 						<Container>
 							<div className='flex flex-col-reverse px-4 lg:px-0 lg:flex-row items-center justify-around my-8 lg:my-16'>
@@ -110,7 +122,7 @@ export default function Home() {
 										</span>
 									</h1>
 									<hr className='mx-auto lg:ml-4 w-16 my-4 border-green-500 border-4' />
-									<h3 className='mb-4 text-3xl lg:text-5xl'>
+									<h3 className='mb-4 text-2xl lg:text-4xl xl:text-5xl'>
 										I am a{" "}
 										<span className='text-stone-700 font-semibold'>
 											<Typewriter
@@ -244,7 +256,7 @@ export default function Home() {
 				<section className='mt-16 py-4 bg-stone-50'>
 					<Container>
 						<Heading title='Previously worked at' />
-						<div className='mt-12 flex items-center justify-around'>
+						<div className='mt-12 flex flex-col lg:flex-row text-center lg:text-left gap-y-4 justify-center items-center lg:justify-around lg:gap-y-0'>
 							<Company
 								title='Stat-ly (Remote - USA)'
 								linkedIn='https://www.linkedin.com/company/stat-ly/'
